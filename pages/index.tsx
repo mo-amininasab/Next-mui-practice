@@ -8,12 +8,25 @@ import {
   Checkbox,
   FormControlLabel,
   TextField,
+  // makeStyles,
 } from '@mui/material';
 import { Save, Delete } from '@mui/icons-material';
+
+// const useStyle = makeStyles({
+//   root: {
+//     background: 'linear-gradient(34deb, #333, #999)',
+//     border: 0,
+//     borderRadius: 15,
+//     color: 'white',
+//     padding: '0 30px',
+//   },
+// });
 
 interface Props {}
 
 const HomePage: NextPage<Props> = () => {
+  // const classes = useStyle();
+
   const [check, setCheck] = useState(false);
   return (
     <div>
@@ -22,8 +35,15 @@ const HomePage: NextPage<Props> = () => {
         color="info"
         size="small"
         startIcon={<Save />}
+        sx={{
+          background: 'linear-gradient(45deg, #fe6b8b, #ff8e53)',
+          border: 0,
+          borderRadius: 15,
+          color: 'white',
+          padding: '5px 30px',
+        }}
       >
-        I'm Button
+        Styled Button
       </Button>
 
       <ButtonGroup>
