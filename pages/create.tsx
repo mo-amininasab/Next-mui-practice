@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { Typography } from '@mui/material';
+import { Typography, Button, ButtonGroup } from '@mui/material';
 
 interface Props {}
 
@@ -14,6 +14,15 @@ const CreatePage: NextPage<Props> = () => {
       >
         Create a new note
       </Typography>
+
+      <Button
+        type="submit"
+        color="secondary"
+        variant="contained"
+        onClick={() => {}}
+      >
+        Submit
+      </Button>
     </div>
   );
 };
