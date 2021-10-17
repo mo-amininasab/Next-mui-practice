@@ -1,11 +1,11 @@
 import { NextPage } from 'next';
-import { Typography, Button, ButtonGroup } from '@mui/material';
-
+import { Typography, Button, Container } from '@mui/material';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 interface Props {}
 
 const CreatePage: NextPage<Props> = () => {
   return (
-    <div>
+    <Container>
       <Typography
         variant="h6"
         component="h2"
@@ -19,11 +19,12 @@ const CreatePage: NextPage<Props> = () => {
         type="submit"
         color="secondary"
         variant="contained"
+        endIcon={<KeyboardArrowRightIcon />}
         onClick={() => {}}
       >
         Submit
       </Button>
-    </div>
+    </Container>
   );
 };
 
