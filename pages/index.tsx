@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { NextPage } from 'next';
 
 import { Container, Grid, Paper } from '@mui/material';
+import NoteCard from '../components/NoteCard';
 
 type Note = {
   title: string;
   details: string;
   category: string;
-  id: number;
+  id: string;
 };
 
 interface Props {}
@@ -21,12 +22,21 @@ const HomePage: NextPage<Props> = () => {
       .then((data) => setNotes(data.notes));
   }, []);
 
+  const deleteHandler = async (id: string) => {
+    await fetch(`/api/data/${id}`, {
+      method: 'DELETE',
+    });
+
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+  };
+
   return (
     <Container>
-      <Grid container>
+      <Grid container spacing={3}>
         {notes.map((note) => (
           <Grid item key={note.id} xs={12} sm={6} lg={4}>
-            <Paper>{note.title}</Paper>
+            <NoteCard note={note} onDelete={deleteHandler} />
           </Grid>
         ))}
       </Grid>
