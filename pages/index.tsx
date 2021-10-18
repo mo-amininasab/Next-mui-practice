@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 
 import { Container, Grid, Paper } from '@mui/material';
 import NoteCard from '../components/NoteCard';
+import Layout from '../components/layout/Layout';
 
 type Note = {
   title: string;
@@ -32,15 +33,17 @@ const HomePage: NextPage<Props> = () => {
   };
 
   return (
-    <Container>
-      <Grid container spacing={3}>
-        {notes.map((note) => (
-          <Grid item key={note.id} xs={12} sm={6} lg={4}>
-            <NoteCard note={note} onDelete={deleteHandler} />
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <Layout>
+      <Container>
+        <Grid container spacing={3}>
+          {notes.map((note) => (
+            <Grid item key={note.id} xs={12} sm={6} lg={4}>
+              <NoteCard note={note} onDelete={deleteHandler} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Layout>
   );
 };
 

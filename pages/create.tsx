@@ -14,6 +14,7 @@ import {
   FormLabel,
 } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import Layout from '../components/layout/Layout';
 
 interface Props {}
 
@@ -56,86 +57,85 @@ const CreatePage: NextPage<Props> = () => {
   };
 
   return (
-    <Container>
-      <Typography
-        variant="h6"
-        component="h2"
-        gutterBottom
-        color="textSecondary"
-      >
-        Create a new note
-      </Typography>
-
-      <form onSubmit={onSubmitHandler} noValidate autoComplete="off">
-        <TextField
-          onChange={(e) => setTitle(e.target.value)}
-          sx={{
-            marginTop: 5,
-            marginBottom: 5,
-            display: 'block',
-          }}
-          variant="outlined"
-          label="Note Title"
-          color="secondary"
-          required
-          fullWidth
-          error={titleError}
-        />
-        <TextField
-          onChange={(e) => setDetails(e.target.value)}
-          sx={{
-            marginBottom: 5,
-          }}
-          variant="outlined"
-          label="Details"
-          multiline
-          rows={4}
-          color="secondary"
-          required
-          fullWidth
-          error={detailsError}
-        />
-
-        <FormControl sx={{ display: 'block', marginBottom: 5 }}>
-          <FormLabel>Note Category</FormLabel>
-          <RadioGroup
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <FormControlLabel
-              value="money"
-              control={<Radio color="secondary" />}
-              label="Money"
-            />
-            <FormControlLabel
-              value="todos"
-              control={<Radio color="secondary" />}
-              label="Todos"
-            />
-            <FormControlLabel
-              value="reminders"
-              control={<Radio color="secondary" />}
-              label="Reminders"
-            />
-            <FormControlLabel
-              value="work"
-              control={<Radio color="secondary" />}
-              label="Work"
-            />
-          </RadioGroup>
-        </FormControl>
-
-        <Button
-          type="submit"
-          color="secondary"
-          variant="contained"
-          endIcon={<KeyboardArrowRightIcon />}
-          onClick={() => {}}
+    <Layout>
+      <Container>
+        <Typography
+          variant="h6"
+          component="h2"
+          gutterBottom
+          color="textSecondary"
         >
-          Submit
-        </Button>
-      </form>
-    </Container>
+          Create a new note
+        </Typography>
+        <form onSubmit={onSubmitHandler} noValidate autoComplete="off">
+          <TextField
+            onChange={(e) => setTitle(e.target.value)}
+            sx={{
+              marginTop: 5,
+              marginBottom: 5,
+              display: 'block',
+            }}
+            variant="outlined"
+            label="Note Title"
+            color="secondary"
+            required
+            fullWidth
+            error={titleError}
+          />
+          <TextField
+            onChange={(e) => setDetails(e.target.value)}
+            sx={{
+              marginBottom: 5,
+            }}
+            variant="outlined"
+            label="Details"
+            multiline
+            rows={4}
+            color="secondary"
+            required
+            fullWidth
+            error={detailsError}
+          />
+          <FormControl sx={{ display: 'block', marginBottom: 5 }}>
+            <FormLabel>Note Category</FormLabel>
+            <RadioGroup
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <FormControlLabel
+                value="money"
+                control={<Radio color="secondary" />}
+                label="Money"
+              />
+              <FormControlLabel
+                value="todos"
+                control={<Radio color="secondary" />}
+                label="Todos"
+              />
+              <FormControlLabel
+                value="reminders"
+                control={<Radio color="secondary" />}
+                label="Reminders"
+              />
+              <FormControlLabel
+                value="work"
+                control={<Radio color="secondary" />}
+                label="Work"
+              />
+            </RadioGroup>
+          </FormControl>
+          <Button
+            type="submit"
+            color="secondary"
+            variant="contained"
+            endIcon={<KeyboardArrowRightIcon />}
+            onClick={() => {}}
+          >
+            Submit
+          </Button>
+        </form>
+      </Container>
+    </Layout>
   );
 };
 
