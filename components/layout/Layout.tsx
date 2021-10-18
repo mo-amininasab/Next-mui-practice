@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import SideDrawer from './SideDrawer'
 
 interface Props {
   
@@ -6,16 +7,19 @@ interface Props {
 
 const Layout: React.FC<Props> = ({children}) => {
   return (
-    <Fragment>
-      
-      <main style={styles}>{children}</main>
-    </Fragment>
+    <div style={{display: 'flex'}}>
+      <SideDrawer />
+      <main style={styles.main}>{children}</main>
+    </div>
   )
 }
 
+
 const styles = {
-  background: '#f9f9f9',
-  width: '100%'
+  main: {
+    background: '#f9f9f9',
+    width: '100%'
+  },
 }
 
 export default Layout
