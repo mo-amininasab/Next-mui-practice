@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 
 import { NextPage } from 'next';
-import { Typography, Button, Container, TextField } from '@mui/material';
+import {
+  Typography,
+  Button,
+  Container,
+  TextField,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+} from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 interface Props {}
 
@@ -10,6 +20,7 @@ const CreatePage: NextPage<Props> = () => {
   const [details, setDetails] = useState('');
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
+  const [category, setCategory] = useState('todos');
 
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +36,7 @@ const CreatePage: NextPage<Props> = () => {
     }
 
     if (title && details) {
-      console.log(title, details);
+      console.log(title, details, category);
     }
   };
 
@@ -69,6 +80,36 @@ const CreatePage: NextPage<Props> = () => {
           fullWidth
           error={detailsError}
         />
+
+        <FormControl sx={{ display: 'block', marginBottom: 5 }}>
+          <FormLabel>Note Category</FormLabel>
+          <RadioGroup
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <FormControlLabel
+              value="money"
+              control={<Radio color="secondary" />}
+              label="Money"
+            />
+            <FormControlLabel
+              value="todos"
+              control={<Radio color="secondary" />}
+              label="Todos"
+            />
+            <FormControlLabel
+              value="reminders"
+              control={<Radio color="secondary" />}
+              label="Reminders"
+            />
+            <FormControlLabel
+              value="work"
+              control={<Radio color="secondary" />}
+              label="Work"
+            />
+          </RadioGroup>
+        </FormControl>
+
         <Button
           type="submit"
           color="secondary"
