@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import {
   Typography,
   Button,
@@ -13,6 +14,7 @@ import {
   FormLabel,
 } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+
 interface Props {}
 
 const CreatePage: NextPage<Props> = () => {
@@ -21,6 +23,8 @@ const CreatePage: NextPage<Props> = () => {
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
   const [category, setCategory] = useState('todos');
+
+  const router = useRouter();
 
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +40,18 @@ const CreatePage: NextPage<Props> = () => {
     }
 
     if (title && details) {
-      console.log(title, details, category);
+      fetch('/api/data', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          details,
+          category,
+          id: new Date(),
+        }),
+      }).then(() => router.push('/'));
     }
   };
 
