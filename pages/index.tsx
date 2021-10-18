@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { NextPage } from 'next';
 
+import { Container, Grid, Paper } from '@mui/material';
+
 type Note = {
   title: string;
   details: string;
@@ -20,11 +22,15 @@ const HomePage: NextPage<Props> = () => {
   }, []);
 
   return (
-    <div>
-      {notes.map((note) => (
-        <p key={note.id}>{note.title}</p>
-      ))}
-    </div>
+    <Container>
+      <Grid container>
+        {notes.map((note) => (
+          <Grid item key={note.id} xs={12} sm={6} lg={4}>
+            <Paper>{note.title}</Paper>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 };
 
